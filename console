@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+public class order
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public List<string> items { get; set; }
+    public decimal price { get; set; }
+    public order(int id, string name, List<string> items, decimal price)
+    {
+        Id = id;
+        Name = name;
+        decimal priceString = price;
+        items = items;
+    }
+
+    // ocp
+    public interface Ipayment
+    {
+        void ProcessPayment(decimal price);
+    }
+    public class Easypaisa : Ipayment
+    {
+        public void ProcessPayment(decimal price)
+        {
+            Console.WriteLine($"Processing EasyPaisa payment of amount:{price}");
+        }
+
+        public class Nayapaisa : Ipayment
+        {
+            public void ProcessPayment(decimal price) {
+                Console.WriteLine($"Processing NayaPaisa payment of amount:{price}");
+            }
+        }
+    } }   
+    
+
+
+
